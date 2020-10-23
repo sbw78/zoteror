@@ -16,4 +16,3 @@ This function allows you to create a bibtex file for the citations used in your 
 create_bibtex()
 
 }
-

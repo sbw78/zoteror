@@ -18,6 +18,7 @@ create_bibtex <- function(){
   temp <- gsubfn::strapplyc(temp, '@\\w+', simplify=T)
   #remove @
   temp <- gsub("@","", temp, fixed = T)
+  # stringr::str_extract_all(temp, '(?<=@).*?(?=\\s|;|])', simplify = TRUE)
   #add quotes
   temp <- shQuote(temp)
   #create jsonstring

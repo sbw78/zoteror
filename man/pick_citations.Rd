@@ -16,4 +16,3 @@ This function allows you to select citations from your zotero library to add the
 pick_citations()
 
 }
-

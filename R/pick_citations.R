@@ -9,14 +9,15 @@ library(purrr)
 #' pick_citations()
 #'
 #' @export
-pick_citations <- function(){
+pick_citations <- function() {
   r <- httr::GET("http://localhost:23119/better-bibtex/cayw")
   if(httr::status_code(r)==200){
-    temp <- httr::content(r)[1]
-
+    # temp <- httr::content(r)[1] # This no longer works, instead use:
+    temp <- httr::content(r, as = "text")
     temp <- unlist(strsplit(temp, ","))
     temp <- purrr::map_chr(temp, ~paste0("@",.))
-    temp <- paste(temp, collapse=", ")
+    temp <- paste(temp, collapse="; ")
+    temp <- paste("[", temp, "]", sep = "") # Default parenthetical citations
 
     rstudioapi::insertText(temp)
   }
